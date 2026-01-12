@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Edit Dutch Lesson</title>
+        <link rel="stylesheet" href="./start.css" />
+        <script src="./script/functions/dutchGrammarEdit.js" type="module" defer></script>
+    </head>
+    <body>
+        <div class="content">
+            <form id="dutch-grammar" action="./start.html">
+                <div class="form-lesson">
+                    <label for="dutch-grammar-lesson">Lesson</label>
+                    <input id="dutch-grammar-lesson" type="number" required min="1" max="99" />
+                    <label for="dutch-grammar-test">Test</label>
+                    <input id="dutch-grammar-test" type="checkbox" />
+                    <label for="dutch-grammar-page">Page</label>
+                    <input id="dutch-grammar-page" type="number" required min="1" max="999" />
+                    <label for="dutch-grammar-answer">Answer</label>
+                    <input id="dutch-grammar-answer" type="number" required min="1" max="999" />
+                    <label for="dutch-grammar-score">Scorer</label>
+                    <input id="dutch-grammar-score" type="number" required min="1" max="5" />
+                    <input type="submit" value="Save" />
+                    <input id="dutch-grammar-delete" type="button" value="Delete" />
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
