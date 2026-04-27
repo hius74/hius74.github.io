@@ -104,7 +104,7 @@ function getElementById(id, ctor) {
 }
 
 // src/page/index.ts
-var cards = await dbGetFirstCards(10);
+var cards = await dbGetFirstCards(30);
 var cardIdx = -1;
 var cardFaceIdx = 0;
 var errorAnswer = false;
@@ -122,10 +122,8 @@ inputElement.addEventListener("keydown", async (event) => {
     const value = inputElement.value;
     const card = cards[cardIdx];
     if (card.name === value) {
-      if (!errorAnswer) {
-        const { level, nextTime } = calculateNextTime(card);
-        await dbNextStage(card.id, level, nextTime);
-      }
+      const { level, nextTime } = calculateNextTime(card, errorAnswer);
+      await dbNextStage(card.id, level, nextTime);
       newCard();
     } else {
       errorAnswer = true;
@@ -158,10 +156,12 @@ function newCard() {
     alert("Finished");
   }
 }
-function calculateNextTime(card) {
+var HOUR = 60 * 60 * 1e3;
+var DAY = 24 * HOUR;
+function calculateNextTime(card, errorAnswer2) {
   return {
-    level: card.level + 1,
-    nextTime: card.nextTime + card.level * 3 * 60 * 60 * 1e3
+    level: errorAnswer2 ? card.level : card.level + 1,
+    nextTime: errorAnswer2 ? (/* @__PURE__ */ new Date()).getTime() + HOUR : ((/* @__PURE__ */ new Date()).getTime() / DAY + 1) * DAY
   };
 }
 if (cards.length > 0) {
@@ -173,6 +173,6 @@ if (cards.length > 0) {
 }
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/service-worker.js").then((reg) => console.log("Service Worker Registered!")).catch((err) => console.log("Registration failed:", err));
+    navigator.serviceWorker.register("/service-worker.js").then(() => console.log("Service Worker Registered!")).catch((err) => console.log("Registration failed:", err));
   });
 }

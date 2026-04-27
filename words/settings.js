@@ -4591,7 +4591,7 @@ async function downloadFile(writable) {
     throw err;
   }
 }
-getElementById("version", HTMLSpanElement).innerHTML = "2026-04-27T07:30:09.561Z";
+getElementById("version", HTMLSpanElement).innerHTML = "2026-04-27T09:56:51.866Z";
 getElementById("update", HTMLButtonElement).addEventListener("click", () => {
   if ("caches" in window) {
     caches.keys().then((names) => {
