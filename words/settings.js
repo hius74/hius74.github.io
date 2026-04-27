@@ -4521,7 +4521,7 @@ async function dbReadBatch(batchSize, lastKey) {
   }
 }
 
-// src/page/load_cards.ts
+// src/page/settings.ts
 getElementById("load-cards-file", HTMLInputElement).addEventListener("change", async (event) => {
   const input = event.target;
   const file = input.files?.[0];
@@ -4591,3 +4591,4 @@ async function downloadFile(writable) {
     throw err;
   }
 }
+getElementById("version", HTMLSpanElement).innerHTML = "2026-04-27T07:05:00.452Z";

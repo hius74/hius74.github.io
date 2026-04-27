@@ -103,7 +103,7 @@ function getElementById(id, ctor) {
   return el;
 }
 
-// src/page/learn_cards.ts
+// src/page/index.ts
 var cards = await dbGetFirstCards(10);
 var cardIdx = -1;
 var cardFaceIdx = 0;
@@ -167,7 +167,7 @@ function calculateNextTime(card) {
 if (cards.length > 0) {
   newCard();
 } else {
-  cardElement.innerHTML = 'No card found to learn. Please <a href="./load_cards.html">load cards.</a>';
+  cardElement.innerHTML = 'No card found to learn. Please <a href="./settings.html">load cards.</a>';
   helpElement.disabled = true;
   inputElement.disabled = true;
 }
